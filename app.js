@@ -1,9 +1,9 @@
 //alert('hello')
-
+var character = {}
 
 const addCharacter = (ev) => {
   ev.preventDefault(); //to stop the form submitting 
-  let character = {
+   character = {
     health: 5,
     strength: 0,
     stealth: 0,
@@ -15,10 +15,7 @@ const addCharacter = (ev) => {
   console.log(character.charClass);
   //document.forms[0].reset();
 
-  if (character.charClass === 'debugger' ){
-      if( test.choice === 'attack') {
-    document.getElementById('text').textContent =" It is working"}
-  }
+
 }
 
 
@@ -33,6 +30,11 @@ const addChoice = (ev) => {
    choice: document.getElementById('uChoice').value.toLowerCase()
   }
   console.log(test.choice);
+  console.log(character.name);
+  if (character.charClass === 'debugger' ){
+    if( test.choice === 'attack') {
+  document.getElementById('text').textContent =" It is working"}
+}
 }
 
 
