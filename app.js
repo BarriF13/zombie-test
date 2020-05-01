@@ -14,12 +14,28 @@ const addCharacter = (ev) => {
   console.log(character.name);
   console.log(character.charClass);
   //document.forms[0].reset();
+
+  if (character.charClass === 'debugger' ){
+      if( test.choice === 'attack') {
+    document.getElementById('text').textContent =" It is working"}
+  }
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('but').addEventListener('click', addCharacter);
-
 });
 
+const addChoice = (ev) => {
+  ev.preventDefault();
+  let test = {
+    
+   choice: document.getElementById('uChoice').value.toLowerCase()
+  }
+  console.log(test.choice);
+}
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('attack').addEventListener('click', addChoice);
+});
