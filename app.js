@@ -76,5 +76,17 @@ if (character.charClass === "debugger"){
   character.stealth = 7;
   character.strength = 5;
 }
-
 }
+function result (){
+  setTimeout( function () {
+  if (outcome === "lose") {
+    
+    document.getElementById('text').textContent = "You lose!.....";
+    } else if (outcome === "win") {
+      document.getElementById('text').textContent = "You win, HOORAY!!!";
+      document.getElementById('userChoice').style.display = 'none';
+  document.getElementById('uChoice').style.display = 'none';
+    }
+  }, 3000);
+}
+
