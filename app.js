@@ -10,6 +10,9 @@ const addName = (ev) => {
   name2 = {
     testName: document.getElementById('name').value.toLowerCase()
   }
+  if(!name2.testName){
+    name2.testName = " Buffy"
+  }
   console.log(name2.testName);
 }
 
@@ -54,14 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function game(){
   if (character.charClass === 'debugger') {
-    if (choice.testChoice === 'attack') {
-      document.getElementById('text').textContent = "Using only your bear hands "+ name2.testName +", you slay that zombie! Success! you loot the store for goods and find an axe, a pack of batteries and five can of Diet cokes.";
-      outcome ='win';
-      character.strength++;
-    }
+    debuggerProfile()
   }
 }
 
+function debuggerProfile (){
+  if (choice.testChoice === 'attack') {
+    document.getElementById('charMsg').textContent = "Using  your laptop "+ name2.testName +", you smashed that zombie with it! Success! you loot the store for goods and find a better, a pack of batteries and five can of Diet cokes.";
+    outcome ='win';
+    character.strength++;
+  } else if (choice.playerChoice === "sneak" ||choice.playerChoice === "sneak by the zombie"){
+    document.getElementById('charMsg').textContent = "As a awesome debugger which you are " + name2.testName + " , you calmly crawling under the table and slowly sneaking from the shop. Now you are in the empty street and can see a car in coming towards you...";
+    outcome ='win';
+    character.strength++;
+  }
+}
 function powerUp (){
   if (character.charClass === "soldier") {
   character.strength = 5;
@@ -81,9 +91,9 @@ function result (){
   setTimeout( function () {
   if (outcome === "lose") {
     
-    document.getElementById('text').textContent = "You lose!.....";
+    document.getElementById('charMsg').textContent = "You lose!.....";
     } else if (outcome === "win") {
-      document.getElementById('text').textContent = "You win, HOORAY!!!";
+      document.getElementById('charMsg').textContent = "You win, HOORAY!!!";
       document.getElementById('userChoice').style.display = 'none';
   document.getElementById('uChoice').style.display = 'none';
     }
