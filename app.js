@@ -1,19 +1,19 @@
 //alert('hello')
 // var test = {};
 var outcome;
-var name2 = {};
+var playerName = {};
 var character = {};
 var choice = {};
 
 const addName = (ev) => {
   ev.preventDefault(); //to stop the form submitting 
-  name2 = {
-    testName: document.getElementById('name').value.toLowerCase()
+  playerName = {
+    pName: document.getElementById('name').value.toLowerCase()
   }
-  if(!name2.testName){
-    name2.testName = " Buffy"
+  if(!playerName.pName){
+    playerName.pName = " Buffy"
   }
-  console.log(name2.testName);
+  console.log(playerName.pName);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -42,9 +42,9 @@ const addChoice = (ev) => {
   ev.preventDefault();
   choice = {
 
-    testChoice: document.getElementById('uChoice').value.toLowerCase()
+    playerChoice: document.getElementById('uChoice').value.toLowerCase()
   }
-  console.log(choice.testChoice);
+  console.log(choice.playerChoice);
   //run a function here --
   game();
 
@@ -58,18 +58,45 @@ document.addEventListener('DOMContentLoaded', () => {
 function game(){
   if (character.charClass === 'debugger') {
     debuggerProfile()
+  } else if (character.charClass === 'soldier') {
+    soldierProfile()
   }
 }
 
 function debuggerProfile (){
-  if (choice.testChoice === 'attack') {
-    document.getElementById('charMsg').textContent = "Using  your laptop "+ name2.testName +", you smashed that zombie with it! Success! you loot the store for goods and find a better, a pack of batteries and five can of Diet cokes.";
+  if (choice.playerChoice === 'attack') {
+    document.getElementById('charMsg').textContent = "Using  your laptop "+ playerName.pName +", you smashed that zombie with it! Success! you loot the store for goods and find a better, a pack of batteries and five can of Diet cokes.";
     outcome ='win';
     character.strength++;
+
+    document.getElementById('showPoints').textContent = "your health : "+character.health+"your strength : " +character.strength;
+
   } else if (choice.playerChoice === "sneak" ||choice.playerChoice === "sneak by the zombie"){
-    document.getElementById('charMsg').textContent = "As a awesome debugger which you are " + name2.testName + " , you calmly crawling under the table and slowly sneaking from the shop. Now you are in the empty street and can see a car in coming towards you...";
+    document.getElementById('charMsg').textContent = "As an awesome debugger which you are " + playerName.pName + " , you calmly crawling under the table and slowly sneaking from the shop. Now you are in a empty street and can see a car in coming towards you...";
+    outcome ='win';
+    character.stealth++;
+
+    document.getElementById('showPoints').textContent = "your health : "+character.health+"your strength : " +character.strength;
+  }
+}
+
+function soldierProfile (){
+  if (choice.playerChoice === 'attack') {
+    document.getElementById('charMsg').textContent = "Attacking the zombie with your bare hand "+ playerName.pName +", you slay that zombie!Victory! you just picked up a big axe and  off to kill them all.";
     outcome ='win';
     character.strength++;
+
+    document.getElementById('showPoints').textContent = "your health : "+character.health+"your strength : " +character.strength;
+
+  } else if (choice.playerChoice === "sneak" ||choice.playerChoice === "sneak by the zombie"){
+    document.getElementById('charMsg').textContent = "No no no " + playerName.pName + " , while you where sneaking out behind the zombie, accidentally dropped a can of diet coke...OH DEAR";
+    setTimeout(() => {
+      document.getElementById('charMsg').textContent = "And now zombie is jumping on you and bit your head off";
+    }, 2000);
+    outcome ='lose';
+    character.stealth++;
+
+    document.getElementById('showPoints').textContent = "your health : "+character.health+"your strength : " +character.strength;
   }
 }
 function powerUp (){
