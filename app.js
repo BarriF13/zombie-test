@@ -5,6 +5,8 @@ var playerName = {};
 var character = {};
 var choice = {};
 
+
+
 const addName = (ev) => {
   ev.preventDefault(); //to stop the form submitting 
   playerName = {
@@ -15,6 +17,12 @@ const addName = (ev) => {
   }
   console.log(playerName.pName);
 }
+
+function hide () {
+
+ document.getElementById('hide').style.display='none';
+}
+  document.getElementById('btnName').addEventListener('click', hide);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btnName').addEventListener('click', addName);
