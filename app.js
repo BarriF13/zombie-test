@@ -5,7 +5,17 @@ var playerName = {};
 var character = {};
 var choice = {};
 
+// $("#testJ").click(function() {
+//   alert("am working");
+// });
 
+// $("#testJ").click(function(){
+//     $("#testHide").hide();
+//   });
+
+  // $("#testJ").click(function(){
+  //   document.querySelectorAll("#testHide","#testHide1").hide();
+  // });
 
 const addName = (ev) => {
   ev.preventDefault(); //to stop the form submitting 
@@ -18,9 +28,14 @@ const addName = (ev) => {
   console.log(playerName.pName);
 }
 
+
+
 function hide () {
 
  document.getElementById('hide').style.display='none';
+ document.getElementById('testHide').style.display='none';
+ document.getElementById('testHide1').style.display='none';
+
 }
   document.getElementById('btnName').addEventListener('click', hide);
 
@@ -36,6 +51,7 @@ const addCharacter = (ev) => {
     stealth: 0,
     // name: document.getElementById('name').value.toLowerCase(),
     charClass: document.getElementById('userCharacter').value.toLowerCase()
+   
   }
   console.log(character.charClass);
   powerUp();
